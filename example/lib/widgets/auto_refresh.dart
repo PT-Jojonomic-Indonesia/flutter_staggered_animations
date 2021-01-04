@@ -11,7 +11,8 @@ class AutoRefresh extends StatefulWidget {
     Key key,
     @required this.duration,
     @required this.child,
-  })  : assert(duration != null),
+  })
+      : assert(duration != null),
         super(key: key);
 
   @override
@@ -45,7 +46,7 @@ class _AutoRefreshState extends State<AutoRefresh> {
   void _recursiveBuild() {
     _timer = Timer(
       widget.duration,
-      () {
+          () {
         setState(() {
           keyValue = keyValue + 1;
           key = ValueKey(keyValue);
