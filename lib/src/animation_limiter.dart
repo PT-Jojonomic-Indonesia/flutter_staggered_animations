@@ -40,20 +40,11 @@ class _AnimationLimiterState extends State<AnimationLimiter> {
   void initState() {
     super.initState();
 
-<<<<<<< HEAD
     WidgetsBinding.instance!.addPostFrameCallback((Duration value) {
       if (!mounted) return;
       setState(() {
         _shouldRunAnimation = false;
       });
-=======
-    WidgetsBinding.instance.addPostFrameCallback((Duration value) {
-      if (mounted) {
-        setState(() {
-          _shouldRunAnimation = false;
-        });
-      }
->>>>>>> 26a3ca24325a00de978e9fa94d15c0f9d6d1f4ee
     });
   }
 
@@ -79,11 +70,7 @@ class _AnimationLimiterProvider extends InheritedWidget {
     return false;
   }
 
-<<<<<<< HEAD
   static _AnimationLimiterProvider? of(BuildContext context) {
-=======
-  static _AnimationLimiterProvider of(BuildContext context) {
->>>>>>> 26a3ca24325a00de978e9fa94d15c0f9d6d1f4ee
     return context.findAncestorWidgetOfExactType<_AnimationLimiterProvider>();
   }
 }
