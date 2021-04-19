@@ -2,8 +2,14 @@ name: example
 description: An example app to show the use of Flutter Staggered Animations.
 version: 0.0.1
 
+publish_to: none
+
 environment:
+<<<<<<< HEAD
+  sdk: ">=2.12.0 <3.0.0"
+=======
   sdk: ">=2.8.0 <3.0.0"
+>>>>>>> 26a3ca24325a00de978e9fa94d15c0f9d6d1f4ee
 
 dependencies:
   flutter:

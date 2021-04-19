@@ -14,10 +14,13 @@ enum FlipAxis {
 /// An animation that flips its child either vertically or horizontally.
 class FlipAnimation extends StatelessWidget {
   /// The duration of the child animation.
-  final Duration duration;
+  final Duration? duration;
 
   /// The delay between the beginning of two children's animations.
-  final Duration delay;
+  final Duration? delay;
+
+  /// The curve of the child animation. Defaults to [Curves.ease].
+  final Curve curve;
 
   /// The [FlipAxis] in which the child widget will be flipped.
   final FlipAxis flipAxis;
@@ -31,13 +34,13 @@ class FlipAnimation extends StatelessWidget {
   ///
   /// The [child] argument must not be null.
   const FlipAnimation({
-    Key key,
+    Key? key,
     this.duration,
     this.delay,
+    this.curve = Curves.ease,
     this.flipAxis = FlipAxis.x,
-    @required this.child,
-  })  : assert(child != null),
-        super(key: key);
+    required this.child,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,7 @@ class FlipAnimation extends StatelessWidget {
     final _flipAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: animation,
-        curve: Interval(0.0, 1.0, curve: Curves.ease),
+        curve: Interval(0.0, 1.0, curve: curve),
       ),
     );
 

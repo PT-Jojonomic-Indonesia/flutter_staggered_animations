@@ -1,13 +1,17 @@
 import 'package:flutter/widgets.dart';
+
 import 'animation_configurator.dart';
 
 /// An animation that scales its child.
 class ScaleAnimation extends StatelessWidget {
   /// The duration of the child animation.
-  final Duration duration;
+  final Duration? duration;
 
   /// The delay between the beginning of two children's animations.
-  final Duration delay;
+  final Duration? delay;
+
+  /// The curve of the child animation. Defaults to [Curves.ease].
+  final Curve curve;
 
   /// Scaling factor to apply at the start of the animation.
   final double scale;
@@ -21,13 +25,13 @@ class ScaleAnimation extends StatelessWidget {
   ///
   /// The [child] argument must not be null.
   const ScaleAnimation({
-    Key key,
+    Key? key,
     this.duration,
     this.delay,
+    this.curve = Curves.ease,
     this.scale = 0.0,
-    @required this.child,
-  })  : assert(child != null),
-        assert(scale != null && scale >= 0.0),
+    required this.child,
+  })   : assert(scale >= 0.0),
         super(key: key);
 
   @override
@@ -43,7 +47,7 @@ class ScaleAnimation extends StatelessWidget {
     final _landingAnimation = Tween<double>(begin: scale, end: 1.0).animate(
       CurvedAnimation(
         parent: animation,
-        curve: Interval(0.0, 1.0, curve: Curves.ease),
+        curve: Interval(0.0, 1.0, curve: curve),
       ),
     );
 
